@@ -121,6 +121,8 @@ a, button {
 .image-border img {
   width: 100%;
   border-radius: 1rem;
+}
+.portfolio-item img{
   height: 250px;
 }
 
