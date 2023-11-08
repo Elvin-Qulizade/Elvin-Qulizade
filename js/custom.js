@@ -285,7 +285,7 @@ function submitForm()
     
         if(message != '')
         {
-            window.open('https://wa.me/+994773339800?text=' + encodeURI(message), '_blank');
+            window.open('https://wa.me/+994775446470?text=' + encodeURI(message), '_blank');
         }
     
         else

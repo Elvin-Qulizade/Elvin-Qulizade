@@ -121,6 +121,7 @@ a, button {
 .image-border img {
   width: 100%;
   border-radius: 1rem;
+  height: 250px;
 }
 
 .title h2 {
