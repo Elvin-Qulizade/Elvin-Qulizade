@@ -3,6 +3,7 @@ Here are some ideas to get you started:
 - 📫 How to reach me: equluzade00@gmail.com
 - 🖱 Website: https://elvin-qulizade.github.io/Elvin-Qulizade/
 - 💼 LinkedIn: https://www.linkedin.com/in/elvin-qulizade/
+
 ![Elvin-Qulizade's Streak](https://github-readme-streak-stats.herokuapp.com/?user=Elvin-Qulizade&theme=default&hide_border=false) 
  
 ![Elvin-Qulizade's Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Elvin-Qulizade&theme=default&show_icons=true&hide_border=false&layout=compact)
