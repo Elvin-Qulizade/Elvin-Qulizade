@@ -1,17 +1,13 @@
-### Hi there 👋
-
-
-**Elvin-Qulizade/Elvin-Qulizade** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
 Here are some ideas to get you started:
 
 - 📫 How to reach me: equluzade00@gmail.com
 - 🖱 Website: https://elvin-qulizade.github.io/Elvin-Qulizade/
-![josephguluzada's Streak](https://github-readme-streak-stats.herokuapp.com/?user=Elvin-Qulizade&theme=default&hide_border=false) 
+- 💼 LinkedIn: https://www.linkedin.com/in/elvin-qulizade/
+![Elvin-Qulizade's Streak](https://github-readme-streak-stats.herokuapp.com/?user=Elvin-Qulizade&theme=default&hide_border=false) 
  
-![josephguluzada's Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Elvin-Qulizade&theme=default&show_icons=true&hide_border=false&layout=compact)
+![Elvin-Qulizade's Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Elvin-Qulizade&theme=default&show_icons=true&hide_border=false&layout=compact)
 
-[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=Elvin-Qulizade&theme=github_light)](https://github.com/Elvin-Qulizade/github-readme-stats)
+[![Elvin-Qulizade's GitHub stats](https://github-readme-stats.vercel.app/api?username=Elvin-Qulizade&theme=github_light)](https://github.com/Elvin-Qulizade/github-readme-stats)
 
 
 
