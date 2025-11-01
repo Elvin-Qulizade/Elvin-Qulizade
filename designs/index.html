@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Folder Index</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            color: #333;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2em;
+            color: #444;
+        }
+
+        select {
+            padding: 10px 15px;
+            font-size: 1em;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            outline: none;
+            margin-bottom: 30px;
+            transition: all 0.2s ease;
+        }
+
+        select:hover, select:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            max-width: 400px;
+            width: 100%;
+            display: none;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        a {
+            display: block;
+            text-decoration: none;
+            padding: 15px 20px;
+            border-radius: 8px;
+            background: #ffffff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            color: #007bff;
+            font-size: 1.1em;
+            transition: all 0.2s ease;
+        }
+
+        a:hover {
+            background: #007bff;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #777;
+        }
+
+        .active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(10px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+    </style>
+</head>
+<body>
+    <h1>Projects</h1>
+
+    <select id="categorySelector">
+        <option value="portfolio">Portfolio</option>
+        <option value="landing">Landing Page</option>
+        <option value="ecommerce">E-commerce</option>
+        <option value="corporative">Corporative</option>
+    </select>
+
+    <!-- Portfolio List -->
+    <ul id="portfolio" class="active">
+        <li><a href="portfolios/1/">Portfolio 1</a></li>
+        <li><a href="portfolios/2/">Portfolio 2</a></li>
+        <li><a href="portfolios/3/">Portfolio 3</a></li>
+        <li><a href="portfolios/4/">Portfolio 4</a></li>
+        <li><a href="portfolios/5/">Portfolio 5</a></li>
+        <li><a href="portfolios/6/">Portfolio 6</a></li>
+        <li><a href="portfolios/7/">Portfolio 7</a></li>
+    </ul>
+
+    <!-- Landing Page List -->
+    <ul id="landing">
+        <li><a href="landing/1/">Landing Page 1</a></li>
+        <li><a href="landing/2/">Landing Page 2</a></li>
+        <li><a href="landing/3/">Landing Page 3</a></li>
+        <li><a href="landing/4/">Landing Page 4</a></li>
+        <li><a href="landing/5/">Landing Page 5</a></li>
+        <li><a href="landing/6/">Landing Page 6</a></li>
+        <li><a href="landing/7/">Landing Page 7</a></li>
+    </ul>
+
+    <!-- E-commerce List -->
+    <ul id="ecommerce">
+        <li><a href="ecommerce/1/">E-Commerce 1</a></li>
+        <li><a href="ecommerce/2/">E-Commerce 2</a></li>
+        <li><a href="ecommerce/3/">E-Commerce 3</a></li>
+        <li><a href="ecommerce/4/">E-Commerce 4</a></li>
+        <li><a href="ecommerce/5/">E-Commerce 5</a></li>
+        <li><a href="ecommerce/6/">E-Commerce 6</a></li>
+        <li><a href="ecommerce/7/">E-Commerce 7</a></li>
+    </ul>
+
+    <!-- Corporative List -->
+    <ul id="corporative">
+        <li><a href="corporative/1/">Corporative 1</a></li>
+        <li><a href="corporative/2/">Corporative 2</a></li>
+        <li><a href="corporative/3/">Corporative 3</a></li>
+        <li><a href="corporative/4/">Corporative 4</a></li>
+        <li><a href="corporative/5/">Corporative 5</a></li>
+        <li><a href="corporative/6/">Corporative 6</a></li>
+        <li><a href="corporative/7/">Corporative 7</a></li>
+    </ul>
+
+    <footer>
+        &copy; Elvin Qulizada
+    </footer>
+
+    <script>
+        const selector = document.getElementById('categorySelector');
+        const sections = document.querySelectorAll('ul');
+
+        selector.addEventListener('change', () => {
+            sections.forEach(sec => sec.classList.remove('active'));
+            const selected = document.getElementById(selector.value);
+            selected.classList.add('active');
+        });
+    </script>
+</body>
+</html>
