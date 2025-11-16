@@ -1,0 +1,140 @@
+name: Pipeline
+
+on:
+  push:
+    branches: [ "main"]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  complete-template-build:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v3
+      with:
+            fetch-depth: 0
+    
+    - run: cd complete-template
+
+
+    - name: Use Node.js 18
+      uses: actions/setup-node@v3
+      with:
+          node-version: '18'   
+          cache: 'npm'
+          cache-dependency-path: 'complete-template/package-lock.json'
+
+    - name: Install dependencies
+      run:  |
+            cd complete-template
+            npm run installD 
+
+    - name: 🔨 Build Project
+      run:  |
+            cd complete-template
+            npm run build
+
+  complete-template-lint:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v3
+      with:
+            fetch-depth: 0
+
+    - run: cd complete-template
+
+    - name: Use Node.js 18
+      uses: actions/setup-node@v3
+      with:
+          node-version: '18' 
+          cache: 'npm'
+          cache-dependency-path: 'complete-template/package-lock.json'
+
+
+    - name: Install dependencies
+      run:  |
+            cd complete-template
+            npm run installD 
+
+    - name: Install Prettier
+      run:  |
+            cd complete-template
+            npm i prettier
+
+    - name: Lint
+      run:  |
+            cd complete-template
+            npm run lint    
+
+  clean-template-build:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v3
+      with:
+            fetch-depth: 0
+
+    - run: cd clean-template
+    
+    - name: Use Node.js 18
+      uses: actions/setup-node@v3
+      with:
+          node-version: '18'   
+          cache: 'npm'
+          cache-dependency-path: 'clean-template/package-lock.json'
+
+
+    - name: Install dependencies
+      run:  |
+            cd clean-template
+            npm run installD 
+
+    - name: 🔨 Build Project
+      run:  |
+            cd clean-template
+            npm run build
+
+  clean-template-lint:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v3
+      with:
+            fetch-depth: 0
+
+    - run: cd clean-template
+
+    - name: Use Node.js 18
+      uses: actions/setup-node@v3
+      with:
+          node-version: '18' 
+          cache: 'npm'
+          cache-dependency-path: 'clean-template/package-lock.json'
+
+
+    - name: Install dependencies
+      run:  |
+            cd clean-template
+            npm run installD 
+
+    - name: Install Prettier
+      run:  |
+            cd clean-template
+            npm i prettier
+
+    - name: Lint
+      run:  |
+            cd clean-template
+            npm run lint    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
