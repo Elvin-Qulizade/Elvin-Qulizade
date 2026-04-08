@@ -10,7 +10,8 @@ const IS_MOBILE = window.innerWidth < 768;
 
 const PROJECTS = [
   { title: 'Satiram', desc: 'Marketplace platform for buying and selling goods with user profiles and messaging.', tech: ['Laravel', 'PHP', 'MySQL'], image: 'assets/projects/satiram.jpeg', github: '#', demo: 'https://satiram.az/' },
-  { title: 'Panorama', desc: 'Photography portfolio with immersive gallery views and client booking system.', tech: ['Laravel', 'PHP', 'MySQL'], image: 'assets/projects/panorama.png', github: '#', demo: 'https://panorama-travel.az/' },
+  { title: 'BBAK', desc: 'A website developed for Baku International Bus Terminal Complex, providing information and services related to transportation and passenger facilities.', tech: ['Laravel', 'PHP', 'MySQL'], image: 'assets/projects/bbak.png', github: '#', demo: 'https://avtovagzal.az/' },
+  { title: 'Panorama', desc: 'Panorama-travel.az is a dedicated online platform offering comprehensive travel planning and booking services exclusively for domestic tourism across Azerbaijan.', tech: ['Laravel', 'PHP', 'MySQL'], image: 'assets/projects/panorama.png', github: '#', demo: 'https://panorama-travel.az/' },
   { title: 'Vion', desc: 'Modern SaaS landing page with animated sections and conversion-optimized design.', tech: ['Laravel', 'PHP', 'MySQL'], image: 'assets/projects/vion.PNG', github: '#', demo: 'https://vionadvisory.com/' },
   { title: 'Karabakh Progress', desc: 'Platform showcasing rebuilding progress in the Karabakh region with real-time updates and data visualization.', tech: ['HTML5', 'CSS3', 'JavaScript'], image: 'assets/projects/karabakhprogress.PNG', github: '#', demo: 'https://karabakhprogress.org/' },
   { title: 'BSU Exam App', desc: 'Digital examination platform for Baku State University with automated grading and analytics.', tech: ['ASP.NET', 'C#', 'SQL Server', 'Bootstrap', 'Windows Form Applications'], image: 'assets/projects/BSU-ExamApp.jpeg', github: '#', demo: '#' },
