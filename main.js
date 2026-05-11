@@ -9,6 +9,7 @@ import { ScrollController } from './js/scrollController.js';
 const IS_MOBILE = window.innerWidth < 768;
 
 const PROJECTS = [
+  { title: 'Roof Academy', desc: 'A comprehensive web solution for ROOF Academic Training that combines course management with an interactive digital module for conducting mock exams.', tech: ['Laravel', 'PHP', 'MySQL', 'JavaScript'], image: 'assets/projects/roof_logo.png', github: '#', demo: 'http://roofacademy.az' },
   { title: 'PASHA Capital IPO', desc: 'A high-security investment platform for Initial Public Offerings (IPO), enabling users to subscribe to shares.', tech: ['Laravel', 'PHP', 'MySQL', 'JavaScript'], image: 'assets/projects/pashabankipo.png', github: '#', demo: 'https://www.pashacapital.az/trading/pashabankipo' },
   { title: 'Satiram', desc: 'Marketplace platform for buying and selling goods with user profiles and messaging.', tech: ['Laravel', 'PHP', 'MySQL'], image: 'assets/projects/satiram.jpeg', github: '#', demo: 'https://satiram.az/' },
   { title: 'BBAK', desc: 'A website developed for Baku International Bus Terminal Complex, providing information and services related to transportation and passenger facilities.', tech: ['Laravel', 'PHP', 'MySQL'], image: 'assets/projects/bbak.png', github: '#', demo: 'https://avtovagzal.az/' },
