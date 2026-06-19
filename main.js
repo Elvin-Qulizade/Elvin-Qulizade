@@ -9,7 +9,7 @@ import { ScrollController } from './js/scrollController.js';
 const IS_MOBILE = window.innerWidth < 768;
 
 const PROJECTS = [
-  { title: 'Smarton Medical', desc: 'Medical equipment and healthcare supplies platform for showcasing and selling a wide range of medical devices, diagnostic tools, hospital equipment, and healthcare products.', tech: ['Laravel', 'PHP', 'MySQL', 'JavaScript'], image: 'assets/projects/smartonmedical.jpg', github: '#', demo: 'https://smartonmedical.az/'},
+  { title: 'Smarton Medical', desc: 'Medical equipment and healthcare supplies platform for showcasing and selling a wide range of medical devices, diagnostic tools, hospital equipment, and healthcare products.', tech: ['Laravel', 'PHP', 'MySQL', 'JavaScript'], image: 'assets/projects/smartonmedical.png', github: '#', demo: 'https://smartonmedical.az/'},
   { title: 'Khazrisec', desc: 'A specialized cybersecurity blog and platform featuring educational articles, threat analysis, and industry insights.', tech: ['Laravel', 'PHP', 'MySQL', 'JavaScript'], image: 'assets/projects/khazrisec.png', github: '#', demo: 'https://khazrisec.com' },
   { title: 'Roof Academy', desc: 'A comprehensive web solution for ROOF Academic Training that combines course management with an interactive digital module for conducting mock exams.', tech: ['Laravel', 'PHP', 'MySQL', 'JavaScript'], image: 'assets/projects/roof_logo.png', github: '#', demo: 'http://roofacademy.az' },
   { title: 'PASHA Capital IPO', desc: 'A high-security investment platform for Initial Public Offerings (IPO), enabling users to subscribe to shares.', tech: ['Laravel', 'PHP', 'MySQL', 'JavaScript'], image: 'assets/projects/pashabankipo.png', github: '#', demo: 'https://www.pashacapital.az/trading/pashabankipo' },
