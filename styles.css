@@ -125,7 +125,7 @@ img { max-width: 100%; display: block; }
 
 /* ── THEME TOGGLE ── */
 #theme-toggle {
-  position: fixed; top: 1.2rem; right: 1.2rem; z-index: 9998;
+  position: fixed; bottom: 1.2rem; right: 1.2rem; z-index: 9998;
   width: 44px; height: 44px; border-radius: 12px;
   border: 1px solid var(--border); background: var(--bg-surface); color: var(--text);
   cursor: pointer; display: flex; align-items: center; justify-content: center;
@@ -346,7 +346,7 @@ body::after {
 @media (max-width: 768px) {
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
-  #theme-toggle { top: 0.8rem; right: 4rem; }
+  #theme-toggle { bottom: 0.8rem; right: 4rem; }
   #webgl-canvas { display: none; }
   .section-laptop { display: none; }
   .skills-3d { display: none; }
