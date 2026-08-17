@@ -1,0 +1,10 @@
+Geist and Geist Mono
+Copyright (c) 2023 Vercel, in collaboration with basement.studio
+
+These fonts (geist-var.woff2, geist-mono-var.woff2) are licensed under the
+SIL Open Font License, Version 1.1 (OFL-1.1).
+Full license text and source: https://github.com/vercel/geist-font
+                              https://openfontlicense.org
+
+The files here are the latin-subset variable woff2 builds as served by
+Google Fonts (https://fonts.google.com/specimen/Geist), fetched 2026-08-16.

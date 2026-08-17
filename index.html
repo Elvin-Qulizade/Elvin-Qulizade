@@ -3,22 +3,40 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="shortcut icon" href="assets/favicon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Elvin Qulizada — Full-Stack Developer</title>
-  <meta name="description" content="Interactive portfolio of Elvin Qulizada, a Full-Stack Developer based in Baku.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Elvin Qulizada — Full-Stack Developer, Baku</title>
+  <meta name="description"
+    content="Elvin Qulizada builds the systems behind financial platforms, public infrastructure and commerce — Laravel, .NET and SQL, shipped end to end. Based in Baku, Azerbaijan.">
+  <meta name="theme-color" content="#0C0E12" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#F4F1EA" media="(prefers-color-scheme: light)">
+  <meta property="og:title" content="Elvin Qulizada — Full-Stack Developer">
+  <meta property="og:description"
+    content="Systems behind financial platforms, public infrastructure and commerce. Laravel · .NET · SQL. Baku.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/favicon.png">
+
+  <link rel="preload" href="assets/fonts/geist-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/geist-mono-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
   <link rel="stylesheet" href="styles.css">
 
-  <script async src="https://ga.jspm.io/npm:es-module-shims@1.10.1/dist/es-module-shims.js"></script>
+  <script>
+    // Theme + capability flags before first paint (no flash, no layout shift).
+    (function () {
+      var d = document.documentElement;
+      var saved = null;
+      try { saved = localStorage.getItem('theme'); } catch (e) { }
+      var theme = (saved === 'light' || saved === 'dark') ? saved : 'dark'; // brand default is dark; toggle persists
+      d.setAttribute('data-theme', theme);
+      d.classList.add('js');
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('reduce-motion');
+    })();
+  </script>
+
   <script type="importmap">
   {
     "imports": {
-      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js",
       "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
     }
   }
@@ -26,229 +44,223 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#work">Skip to selected work</a>
 
-  <!-- LOADING SCREEN -->
-  <div id="loading-screen">
-    <div class="loader-content">
-      <div class="loader-terminal">
-        <div class="loader-line" data-delay="0">BIOS v3.2.1 — System Check</div>
-        <div class="loader-line" data-delay="200">Memory .......... 16384 MB OK</div>
-        <div class="loader-line" data-delay="400">GPU ............. WebGL 2.0 OK</div>
-        <div class="loader-line" data-delay="600">Loading assets ...</div>
-        <div class="loader-line" data-delay="800">Initializing 3D engine ...</div>
-        <div class="loader-line" data-delay="1000">Mounting filesystem ...</div>
-        <div class="loader-bar-wrap" data-delay="1200">
-          <div class="loader-bar">
-            <div class="loader-bar-fill"></div>
-          </div>
-        </div>
-        <div class="loader-line loader-ready" data-delay="1800">READY_</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- THEME TOGGLE -->
-  <button id="theme-toggle" aria-label="Toggle theme">
-    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <circle cx="12" cy="12" r="5" />
-      <line x1="12" y1="1" x2="12" y2="3" />
-      <line x1="12" y1="21" x2="12" y2="23" />
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-      <line x1="1" y1="12" x2="3" y2="12" />
-      <line x1="21" y1="12" x2="23" y2="12" />
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-    </svg>
-    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2">
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-    </svg>
-  </button>
+  <!-- Single shared WebGL canvas (hero laptop + skills wall render into it on demand) -->
+  <canvas id="gl" aria-hidden="true"></canvas>
 
   <!-- NAV -->
-  <nav id="main-nav">
-    <div class="nav-logo">elvin<span class="accent">.</span>dev</div>
-    <div class="nav-links">
-      <a href="#hero" class="nav-link active" data-section="hero">Home</a>
-      <a href="#about" class="nav-link" data-section="about">About</a>
-      <a href="#skills" class="nav-link" data-section="skills">Skills</a>
-      <a href="#projects" class="nav-link" data-section="projects">Projects</a>
-      <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+  <header id="nav" class="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-brand" aria-label="Elvin Qulizada — home">
+        <span class="nav-mono">EQ</span>
+        <span class="nav-name">Elvin Qulizada</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#work" class="nav-link" data-section="work">Work</a>
+        <a href="#about" class="nav-link" data-section="about">About</a>
+        <a href="#stack" class="nav-link" data-section="stack">Stack</a>
+        <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="mailto:equluzade00@gmail.com?subject=Project%20enquiry" class="nav-cta">Email</a>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light theme"
+          aria-pressed="false">
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.75" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+          </svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.75" stroke-linecap="round" aria-hidden="true">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+          </svg>
+        </button>
+        <button id="hamburger" class="hamburger" type="button" aria-label="Open menu" aria-expanded="false"
+          aria-controls="mobile-menu">
+          <span></span><span></span>
+        </button>
+      </div>
     </div>
-    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
+  </header>
 
-  <!-- MOBILE MENU -->
-  <div id="mobile-menu" class="mobile-menu">
-    <a href="#hero" class="mobile-link">Home</a>
-    <a href="#about" class="mobile-link">About</a>
-    <a href="#skills" class="mobile-link">Skills</a>
-    <a href="#projects" class="mobile-link">Projects</a>
-    <a href="#contact" class="mobile-link">Contact</a>
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+    <nav aria-label="Mobile">
+      <a href="#work" class="mobile-link"><span class="idx">01</span>Work</a>
+      <a href="#about" class="mobile-link"><span class="idx">02</span>About</a>
+      <a href="#stack" class="mobile-link"><span class="idx">03</span>Stack</a>
+      <a href="#contact" class="mobile-link"><span class="idx">04</span>Contact</a>
+    </nav>
+    <div class="mobile-menu-foot">
+      <a href="mailto:equluzade00@gmail.com">equluzade00@gmail.com</a>
+      <span>Baku · GMT+4</span>
+    </div>
   </div>
 
-  <!-- SCROLL PROGRESS -->
-  <div id="scroll-progress">
-    <div id="scroll-progress-bar"></div>
-  </div>
-
-  <!-- THREE.JS CANVAS -->
-  <canvas id="webgl-canvas"></canvas>
-
-  <!-- SECTIONS -->
-  <main id="scroll-container">
+  <main id="main">
 
     <!-- HERO -->
-    <section id="hero" class="section section-hero">
-      <div class="hero-content">
-        <div class="hero-greeting">
-          <span class="hero-tag">&lt;</span>hello world<span class="hero-tag">/&gt;</span>
+    <section id="hero" class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <p class="hero-rail" aria-hidden="true">BAKU · 40°24′N 49°52′E · GMT+4</p>
+
+        <div class="hero-copy">
+          <p class="label reveal"><span>Full-Stack Developer · Baku</span></p>
+          <h1 id="hero-title" class="hero-name">
+            <span class="hero-line">Elvin</span>
+            <span class="hero-line">Qulizada</span>
+          </h1>
+          <p class="hero-lead reveal"><span>I design and build the systems behind financial platforms, public
+              infrastructure and commerce — Laravel, .NET and SQL, shipped end to end.</span></p>
+          <p class="hero-avail reveal"><span><i class="dot" aria-hidden="true"></i>Available for freelance &amp;
+              full-time — Baku / remote, GMT+4</span></p>
+          <div class="hero-cta reveal">
+            <span>
+              <a href="#work" class="btn btn-solid" data-magnetic>Selected work</a>
+              <a href="#contact" class="btn btn-line" data-magnetic>Start a conversation</a>
+            </span>
+          </div>
         </div>
-        <h1 class="hero-name">Elvin<br><span class="accent">Qulizada</span></h1>
-        <p class="hero-role">Full-Stack Developer</p>
-        <p class="hero-location">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-            <circle cx="12" cy="10" r="3" />
-          </svg>
-          Baku, Azerbaijan
-        </p>
-        <div class="hero-cta">
-          <a href="#projects" class="btn btn-primary">View Projects</a>
-          <a href="#contact" class="btn btn-outline">Contact Me</a>
-        </div>
-        <div class="scroll-indicator">
-          <span>Scroll to explore</span>
-          <div class="scroll-arrow"></div>
+
+        <div class="hero-stage" aria-hidden="true"></div>
+
+        <div class="hero-foot">
+          <p class="hero-scroll label"><span class="scroll-line" aria-hidden="true"></span>Scroll — 01 / 04</p>
+          <dl class="hero-stats">
+            <div><dt>Projects</dt><dd>21</dd></div>
+            <div><dt>Live sites</dt><dd>11</dd></div>
+            <div><dt>Core stacks</dt><dd>02</dd></div>
+          </dl>
         </div>
       </div>
     </section>
 
-    <!-- LAPTOP SCROLL STAGE (extended spacer) -->
-    <section id="laptop-stage" class="section section-laptop">
-      <div class="laptop-spacer"></div>
+    <!-- WORK — every project, one grid, equal weight -->
+    <section id="work" class="section section-work" aria-labelledby="work-title">
+      <div class="container">
+        <div class="section-rule">
+          <span class="label"><span class="idx">01</span> Work</span>
+          <span class="label count" id="work-count">21 / 21</span>
+        </div>
+        <div class="section-head">
+          <h2 id="work-title" class="h2">Everything I've built</h2>
+          <p class="lead">Client platforms, public services and university prototypes — the full list.</p>
+        </div>
+
+        <div class="work-filters" role="group" aria-label="Filter projects by technology" id="work-filters"></div>
+        <p class="sr-only" role="status" aria-live="polite" id="work-status"></p>
+
+        <div class="work-grid" id="work-grid"></div>
+      </div>
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="section section-about">
+    <section id="about" class="section section-about" aria-labelledby="about-title">
       <div class="container">
-        <div class="section-header">
-          <span class="section-tag">// about</span>
-          <h2 class="section-title">whoami</h2>
+        <div class="section-rule">
+          <span class="label"><span class="idx">02</span> About</span>
         </div>
         <div class="about-grid">
-          <div class="about-photo-wrap">
-            <img src="assets/profile.jpg" alt="Elvin Qulizada" class="about-photo" loading="lazy">
-            <div class="about-photo-border"></div>
-          </div>
+          <figure class="about-photo">
+            <img src="assets/img/profile-640.webp" srcset="assets/img/profile-320.webp 320w, assets/img/profile-640.webp 640w"
+              sizes="(min-width: 1024px) 28vw, (min-width: 640px) 50vw, 100vw" width="640" height="800"
+              alt="Portrait of Elvin Qulizada" loading="lazy" decoding="async">
+            <figcaption class="label">Elvin Qulizada · Baku</figcaption>
+          </figure>
           <div class="about-text">
-            <div class="terminal-block">
-              <div class="terminal-header">
-                <span class="terminal-dot red"></span>
-                <span class="terminal-dot yellow"></span>
-                <span class="terminal-dot green"></span>
-                <span class="terminal-title">about.sh</span>
-              </div>
-              <div class="terminal-body">
-                <p><span class="prompt">$</span> cat about.txt</p>
-                <p class="mt">Hi, I'm <strong>Elvin Qulizada</strong> — a passionate Full-Stack Developer from Baku,
-                  Azerbaijan. I build modern, scalable web applications using cutting-edge technologies.</p>
-                <p class="mt">I specialize in crafting clean, efficient code on both the frontend and backend. From
-                  dynamic user interfaces to robust server architectures, I deliver end-to-end solutions.</p>
-                <p class="mt">When I'm not coding, you'll find me exploring new frameworks, contributing to open source,
-                  or optimizing system performance.</p>
-                <p class="mt"><span class="prompt">$</span> <span class="cursor-blink">_</span></p>
-              </div>
-            </div>
+            <h2 id="about-title" class="h2">Precision over flourish.</h2>
+            <p class="lead">I'm a full-stack developer based in Baku. I build production web platforms for banks,
+              transport authorities and private companies — from database schema to deployed interface.</p>
+            <p>Most of my work runs on Laravel and PHP or ASP.NET and C#, backed by MySQL and SQL Server. I care about the
+              parts users don't see: data integrity, access control, performance under load, and code the next developer
+              can read.</p>
+            <p>Recent work includes the IPO subscription platform for PASHA Capital, the public site for Baku
+              International Bus Terminal, and Satiram marketplace.</p>
+            <dl class="about-facts">
+              <div><dt>Location</dt><dd>Baku, Azerbaijan</dd></div>
+              <div><dt>Focus</dt><dd>Laravel · .NET · SQL</dd></div>
+              <div><dt>Work</dt><dd>Freelance &amp; full-time</dd></div>
+              <div><dt>Timezone</dt><dd>GMT+4 · <span id="local-time">--:--</span> local</dd></div>
+            </dl>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SKILLS -->
-    <section id="skills" class="section section-skills">
+    <!-- STACK -->
+    <section id="stack" class="section section-stack" aria-labelledby="stack-title">
       <div class="container">
-        <div class="section-header">
-          <span class="section-tag">// skills</span>
-          <h2 class="section-title">tech_stack</h2>
+        <div class="section-rule">
+          <span class="label"><span class="idx">03</span> Stack</span>
         </div>
-        <div id="skills-3d-container" class="skills-3d"></div>
-        <div class="skills-grid" id="skills-grid"></div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" class="section section-projects">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">// projects</span>
-          <h2 class="section-title">ls ~/projects</h2>
+        <div class="stack-grid">
+          <div class="stack-copy">
+            <h2 id="stack-title" class="h2">Capabilities</h2>
+            <p class="lead">Backend-first. Interfaces that respect the data underneath them.</p>
+            <ul class="ledger" id="ledger" aria-label="Technology stack"></ul>
+          </div>
+          <div class="skills-stage" id="skills-stage" aria-hidden="true">
+            <div class="skill-tooltip" id="skill-tooltip" role="presentation"></div>
+          </div>
         </div>
-        <div class="projects-grid" id="projects-grid"></div>
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="section section-contact">
+    <section id="contact" class="section section-contact" aria-labelledby="contact-title">
       <div class="container">
-        <div class="section-header">
-          <span class="section-tag">// contact</span>
-          <h2 class="section-title">get_in_touch</h2>
+        <div class="section-rule">
+          <span class="label"><span class="idx">04</span> Contact</span>
         </div>
-        <div class="contact-terminal">
-          <div class="terminal-block large">
-            <div class="terminal-header">
-              <span class="terminal-dot red"></span>
-              <span class="terminal-dot yellow"></span>
-              <span class="terminal-dot green"></span>
-              <span class="terminal-title">contact.sh</span>
-            </div>
-            <div class="terminal-body" id="contact-terminal-body">
-              <p><span class="prompt">$</span> ./contact --list</p>
-              <div class="contact-links">
-                <a href="mailto:equluzade00@gmail.com" class="contact-line">
-                  <span class="contact-icon">📧</span>
-                  <span class="contact-label">email</span>
-                  <span class="contact-value">equluzade00@gmail.com</span>
-                </a>
-                <a href="https://github.com/Elvin-Qulizade" target="_blank" class="contact-line">
-                  <span class="contact-icon">⚡</span>
-                  <span class="contact-label">github</span>
-                  <span class="contact-value">github.com/Elvin-Qulizade</span>
-                </a>
-                <a href="https://www.linkedin.com/in/elvin-qulizade/" target="_blank" class="contact-line">
-                  <span class="contact-icon">🔗</span>
-                  <span class="contact-label">linkedin</span>
-                  <span class="contact-value">linkedin.com/in/elvin-qulizade</span>
-                </a>
-                <a href="https://wa.me/994775446470" target="_blank" class="contact-line">
-                  <span class="contact-icon">💬</span>
-                  <span class="contact-label">whatsapp</span>
-                  <span class="contact-value">+994 77 544 64 70</span>
-                </a>
-              </div>
-              <p class="mt"><span class="prompt">$</span> echo "Let's build something great together!"</p>
-              <p class="contact-cta-text">"Let's build something great together!"</p>
-              <p class="mt"><span class="prompt">$</span> <span class="cursor-blink">_</span></p>
-            </div>
+        <div class="contact-grid">
+          <div class="contact-copy">
+            <h2 id="contact-title" class="h2">Have a system to build?</h2>
+            <p class="lead">I take on a small number of projects at a time. Tell me what you're working on.</p>
+            <a class="contact-mail" href="mailto:equluzade00@gmail.com?subject=Project%20enquiry"
+              data-magnetic>equluzade00@gmail.com</a>
           </div>
+          <dl class="contact-list">
+            <div>
+              <dt>Email</dt>
+              <dd><a href="mailto:equluzade00@gmail.com">equluzade00@gmail.com</a></dd>
+            </div>
+            <div>
+              <dt>GitHub</dt>
+              <dd><a href="https://github.com/Elvin-Qulizade" target="_blank" rel="noopener noreferrer">github.com/Elvin-Qulizade
+                  <span class="ext" aria-hidden="true">↗</span></a></dd>
+            </div>
+            <div>
+              <dt>LinkedIn</dt>
+              <dd><a href="https://www.linkedin.com/in/elvin-qulizade/" target="_blank"
+                  rel="noopener noreferrer">linkedin.com/in/elvin-qulizade <span class="ext" aria-hidden="true">↗</span></a></dd>
+            </div>
+            <div>
+              <dt>WhatsApp</dt>
+              <dd><a href="https://wa.me/994775446470" target="_blank" rel="noopener noreferrer">+994 77 544 64 70 <span
+                    class="ext" aria-hidden="true">↗</span></a></dd>
+            </div>
+          </dl>
         </div>
       </div>
     </section>
-
-    <footer class="footer">
-      <div class="container footer-inner">
-        <span class="footer-logo">elvin<span class="accent">.</span>dev</span>
-        <span class="footer-copy">&copy; 2026 Elvin Qulizada. All rights reserved.</span>
-      </div>
-    </footer>
   </main>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© 2026 Elvin Qulizada</span>
+      <span>Baku · GMT+4 · <span id="footer-time">--:--</span></span>
+      <span>Built with Three.js + GSAP</span>
+    </div>
+  </footer>
+
+  <!-- Mobile thumb-zone bar -->
+  <div class="mobile-bar" id="mobile-bar" aria-label="Quick contact">
+    <a href="mailto:equluzade00@gmail.com?subject=Project%20enquiry">Email</a>
+    <a href="https://wa.me/994775446470" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+  </div>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script type="module" src="./main.js"></script>
 </body>
 
