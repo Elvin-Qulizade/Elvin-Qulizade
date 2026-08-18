@@ -79,6 +79,12 @@ const PROJECTS = [
     tech: ['Laravel', 'MySQL', 'JavaScript'], demo: 'https://smartonmedical.az/'
   },
   {
+    key: 'smarton', title: 'Smarton', type: 'Commerce',
+    logo: 'assets/logos/smarton.svg',
+    desc: 'WhatsApp-integrated chatbot that automates customer support.',
+    tech: ['Laravel', 'MySQL'], demo: 'https://smarton.az'
+  },
+  {
     key: 'panorama', title: 'Panorama Travel', type: 'Travel', logo: 'assets/logos/panorama.webp', tone: 'light', brand: '#4DBBE8',
     desc: 'Planning and booking platform for domestic tourism across Azerbaijan.',
     tech: ['Laravel', 'MySQL'], demo: 'https://panorama-travel.az/'
@@ -106,7 +112,7 @@ const PROJECTS = [
   },
   {
     key: 'karabakhprogress', title: 'Karabakh Progress', type: 'Public sector', logo: 'assets/logos/karabakh-progress.svg', tone: 'dark', brand: '#126C61',
-    desc: 'Public dashboard tracking reconstruction across Karabakh with live updates.',
+    desc: 'Landing page for Tech Karabakh Hackathon and World Urban Forum.',
     tech: ['HTML', 'CSS', 'JavaScript'], demo: 'https://karabakhprogress.org/'
   },
   {
