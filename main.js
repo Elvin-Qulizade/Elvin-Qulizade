@@ -80,9 +80,15 @@ const PROJECTS = [
   },
   {
     key: 'smarton', title: 'Smarton', type: 'Commerce',
-    logo: 'assets/logos/smarton.svg',
+    logo: 'assets/logos/smarton.svg', brand: '#a40745',
     desc: 'WhatsApp-integrated chatbot that automates customer support.',
     tech: ['Laravel', 'MySQL'], demo: 'https://smarton.az'
+  },
+  {
+    key: 'sotyapman-main', title: 'Sotyapman', type: 'Marketplace',
+    logo: 'assets/logos/sotyapman-main.svg', brand: '#FC540C',
+    desc: 'C2C marketplace with listings, user profiles and built-in messaging for Uzbekistan.',
+    tech: ['Laravel', 'MySQL'], demo: 'http://sotyapman.uz'
   },
   {
     key: 'panorama', title: 'Panorama Travel', type: 'Travel', logo: 'assets/logos/panorama.webp', tone: 'light', brand: '#4DBBE8',
